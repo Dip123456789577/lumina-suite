@@ -10,7 +10,7 @@ import { fetchPokemon, TYPE_COLORS } from "@/lib/pokemon";
 export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
-      { title: "Compare — Aether Dex" },
+      { title: "Compare â€” Lumina Suite" },
       { name: "description", content: "Side-by-side biological comparison of any two specimens." },
     ],
   }),
@@ -27,7 +27,7 @@ function Compare() {
   return (
     <div className="relative mx-auto max-w-[1440px] px-5 py-12 md:px-16">
       <Reveal>
-        <div className="label-caps text-aether">Power Comparator</div>
+        <div className="label-caps text-lumina">Power Comparator</div>
         <h1 className="mt-3 text-[clamp(2.4rem,6vw,5rem)] font-extrabold tracking-[-0.02em]">Run a head-to-head scan.</h1>
       </Reveal>
 
@@ -36,7 +36,7 @@ function Compare() {
         <motion.div
           animate={{ rotate: [0, 8, -8, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="glass-strong grid h-16 w-16 place-items-center rounded-full text-lg font-extrabold tracking-widest text-aether mx-auto"
+          className="glass-strong grid h-16 w-16 place-items-center rounded-full text-lg font-extrabold tracking-widest text-lumina mx-auto"
         >
           VS
         </motion.div>
@@ -46,7 +46,7 @@ function Compare() {
       {pa && pb && (
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           <SpecCard p={pa} accent="var(--ember)" />
-          <SpecCard p={pb} accent="var(--aether)" />
+          <SpecCard p={pb} accent="var(--lumina)" />
         </div>
       )}
     </div>

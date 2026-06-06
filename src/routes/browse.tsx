@@ -11,7 +11,7 @@ import { fetchPokemonList, type PokeType } from "@/lib/pokemon";
 export const Route = createFileRoute("/browse")({
   head: () => ({
     meta: [
-      { title: "Archive — Aether Dex" },
+      { title: "Archive â€” Lumina Suite" },
       { name: "description", content: "Browse 1025+ specimens with biological filters, elemental types and instant search." },
     ],
   }),
@@ -51,9 +51,9 @@ function Browse() {
   return (
     <div className="relative mx-auto max-w-[1440px] px-5 py-16 md:px-16">
       <Reveal>
-        <div className="label-caps text-aether">Biological Archive</div>
+        <div className="label-caps text-lumina">Biological Archive</div>
         <h1 className="mt-3 text-[clamp(2.4rem,6vw,5rem)] font-extrabold tracking-[-0.02em]">Explore every specimen.</h1>
-        <p className="mt-4 max-w-xl text-muted-foreground">Filter by elemental affinity, search by Pokédex number, and stream specimens on demand.</p>
+        <p className="mt-4 max-w-xl text-muted-foreground">Filter by elemental affinity, search by PokÃ©dex number, and stream specimens on demand.</p>
       </Reveal>
 
       {/* search */}
@@ -63,11 +63,11 @@ function Browse() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Filter loaded specimens by name or ID…"
+            placeholder="Filter loaded specimens by name or IDâ€¦"
             className="h-12 flex-1 bg-transparent text-base text-foreground placeholder:text-foreground/40 focus:outline-none"
           />
           {query && (
-            <button onClick={() => setQuery("")} className="px-3 text-xs text-foreground/60 hover:text-aether">clear</button>
+            <button onClick={() => setQuery("")} className="px-3 text-xs text-foreground/60 hover:text-lumina">clear</button>
           )}
         </div>
       </Reveal>
@@ -84,7 +84,7 @@ function Browse() {
             );
           })}
           {activeTypes.size > 0 && (
-            <button onClick={() => setActiveTypes(new Set())} className="ml-2 rounded-full border border-white/10 px-3 py-1 label-caps text-foreground/60 hover:text-aether">reset</button>
+            <button onClick={() => setActiveTypes(new Set())} className="ml-2 rounded-full border border-white/10 px-3 py-1 label-caps text-foreground/60 hover:text-lumina">reset</button>
           )}
         </div>
       </Reveal>

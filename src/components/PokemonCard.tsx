@@ -29,7 +29,7 @@ export function PokemonCard({ p, index = 0 }: { p: PokemonSummary; index?: numbe
           />
           <div className="relative flex items-center justify-between">
             <span className="label-caps text-foreground/50">#{String(p.id).padStart(4, "0")}</span>
-            <span className="label-caps text-foreground/40">BST · {p.total}</span>
+            <span className="label-caps text-foreground/40">BST Â· {p.total}</span>
           </div>
 
           <div className="relative mt-2 grid h-44 place-items-center md:h-52" style={{ transform: "translateZ(40px)" }}>
@@ -65,7 +65,7 @@ export function PokemonCard({ p, index = 0 }: { p: PokemonSummary; index?: numbe
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
               className="h-full rounded-full"
-              style={{ background: `linear-gradient(90deg, ${tcol.fg}, var(--aether))`, boxShadow: `0 0 12px ${tcol.glow}` }}
+              style={{ background: `linear-gradient(90deg, ${tcol.fg}, var(--lumina))`, boxShadow: `0 0 12px ${tcol.glow}` }}
             />
           </div>
         </Link>

@@ -8,16 +8,17 @@ import { MagneticButton } from "@/components/MagneticButton";
 import { PokemonCard } from "@/components/PokemonCard";
 import { TypeBadge } from "@/components/TypeBadge";
 import { TiltCard } from "@/components/TiltCard";
+import { HeroScene } from "@/components/3d/HeroScene";
 import { fetchPokemon, FEATURED_IDS, TRENDING_IDS, TYPE_COLORS, type PokeType } from "@/lib/pokemon";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aether Dex — Premium Biological Archive" },
-      { name: "description", content: "A cinematic Pokédex experience. Explore 1025+ specimens with luxury data visualization." },
-      { property: "og:title", content: "Aether Dex — Premium Biological Archive" },
-      { property: "og:description", content: "A cinematic Pokédex experience. Explore 1025+ specimens with luxury data visualization." },
+      { title: "Lumina Suite â€” Premium Biological Archive" },
+      { name: "description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
+      { property: "og:title", content: "Lumina Suite â€” Premium Biological Archive" },
+      { property: "og:description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
     ],
   }),
   component: Index,
@@ -46,16 +47,17 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={ref} className="relative mx-auto flex min-h-[88vh] max-w-[1440px] flex-col items-center justify-center px-5 pt-16 text-center md:px-16">
-      <motion.div style={{ y, opacity }} className="relative">
+    <section ref={ref} className="relative mx-auto flex min-h-[88vh] max-w-[1440px] flex-col items-center justify-center px-5 pt-16 text-center md:px-16 overflow-visible">
+      <HeroScene />
+      <motion.div style={{ y, opacity }} className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 label-caps text-foreground/70"
         >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-aether shadow-[0_0_10px_var(--aether)]" />
-          Aether Link · v1.0 · Live
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lumina shadow-[0_0_10px_var(--lumina)]" />
+          Lumina Link Â· v1.0 Â· Live
         </motion.div>
 
         <h1 className="mx-auto mt-8 max-w-[14ch] text-[clamp(2.6rem,8vw,6.5rem)] font-extrabold leading-[1] tracking-[-0.03em]">
@@ -74,7 +76,7 @@ function Hero() {
             initial={{ opacity: 0, y: 36, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
             transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative inline-block bg-gradient-to-br from-aether via-secondary to-ember bg-clip-text text-transparent"
+            className="relative inline-block bg-gradient-to-br from-lumina via-secondary to-ember bg-clip-text text-transparent"
           >
             living things.
           </motion.span>
@@ -86,7 +88,7 @@ function Hero() {
           transition={{ delay: 0.9, duration: 0.8 }}
           className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg"
         >
-          A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and elemental affinities — rendered in liquid glass.
+          A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and elemental affinities â€” rendered in liquid glass.
         </motion.p>
 
         <motion.div
@@ -138,12 +140,12 @@ function Featured() {
       <Reveal>
         <div className="flex items-end justify-between gap-6">
           <div>
-            <div className="label-caps text-aether">Featured Specimens</div>
+            <div className="label-caps text-lumina">Featured Specimens</div>
             <h2 className="mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight tracking-tight">
               Hand-picked from the<br />neural archive.
             </h2>
           </div>
-          <Link to="/browse" className="hidden items-center gap-2 label-caps text-foreground/60 transition hover:text-aether md:inline-flex">
+          <Link to="/browse" className="hidden items-center gap-2 label-caps text-foreground/60 transition hover:text-lumina md:inline-flex">
             View All Data
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </Link>
@@ -172,10 +174,10 @@ function SearchBand() {
         <div className="glass-strong relative flex items-center gap-3 rounded-full p-2 pl-6">
           <svg viewBox="0 0 24 24" className="h-5 w-5 text-foreground/60" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
           <input
-            placeholder="Search by name, type, or Pokédex number…"
+            placeholder="Search by name, type, or PokÃ©dex numberâ€¦"
             className="h-12 flex-1 bg-transparent text-base text-foreground placeholder:text-foreground/40 focus:outline-none"
           />
-          <kbd className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-xs text-foreground/60">⌘ K</kbd>
+          <kbd className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-xs text-foreground/60">âŒ˜ K</kbd>
         </div>
       </Reveal>
     </section>
@@ -184,7 +186,7 @@ function SearchBand() {
 
 function Stats() {
   const items = [
-    { v: 1025, suf: "+", label: "Total Pokémon Discovered", color: "var(--aether)" },
+    { v: 1025, suf: "+", label: "Total PokÃ©mon Discovered", color: "var(--lumina)" },
     { v: 18, suf: "", label: "Elemental Types Archived", color: "var(--psychic)" },
     { v: 9, suf: "", label: "World Regions Mapped", color: "var(--ember)" },
   ];
@@ -213,7 +215,7 @@ function TypesShowcase() {
   return (
     <section className="relative mx-auto max-w-[1440px] px-5 py-24 md:px-16">
       <Reveal>
-        <div className="label-caps text-aether">Elemental Spectrum</div>
+        <div className="label-caps text-lumina">Elemental Spectrum</div>
         <h2 className="mt-3 max-w-[20ch] text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight tracking-tight">
           Eighteen frequencies, one living grid.
         </h2>
@@ -248,7 +250,7 @@ function Trending() {
       <Reveal>
         <div className="flex items-end justify-between">
           <div>
-            <div className="label-caps text-aether">Trending Near You</div>
+            <div className="label-caps text-lumina">Trending Near You</div>
             <h2 className="mt-3 text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight">Recently scanned specimens</h2>
           </div>
         </div>
@@ -267,8 +269,8 @@ function CTA() {
     <section className="relative mx-auto max-w-[1440px] px-5 pt-12 md:px-16">
       <Reveal>
         <div className="glass-strong relative overflow-hidden rounded-[32px] p-12 text-center md:p-20">
-          <div className="pointer-events-none absolute inset-0 aether-gradient opacity-20" />
-          <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-aether blur-3xl opacity-30" />
+          <div className="pointer-events-none absolute inset-0 lumina-gradient opacity-20" />
+          <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-lumina blur-3xl opacity-30" />
           <div className="pointer-events-none absolute -bottom-40 -right-32 h-[28rem] w-[28rem] rounded-full bg-psychic blur-3xl opacity-30" />
           <div className="relative">
             <div className="label-caps text-foreground/80">Begin Transmission</div>

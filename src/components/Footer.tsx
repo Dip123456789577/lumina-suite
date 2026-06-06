@@ -11,7 +11,7 @@ export function Footer() {
     >
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 md:grid-cols-4 md:px-16">
         <div>
-          <div className="text-lg font-extrabold tracking-[0.18em]">AETHER·DEX</div>
+          <div className="text-lg font-extrabold tracking-[0.18em]">AETHERÂ·DEX</div>
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">A cinematic encyclopedia of biological specimens. Built for explorers.</p>
         </div>
         {[
@@ -24,7 +24,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               {col.items.map((i) => (
                 <li key={i}>
-                  <a href="#" className="transition hover:text-aether">{i}</a>
+                  <a href="#" className="transition hover:text-lumina">{i}</a>
                 </li>
               ))}
             </ul>
@@ -32,8 +32,8 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto flex max-w-[1440px] flex-col items-start gap-3 border-t border-white/5 px-5 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between md:px-16">
-        <span>© 2026 Aether Global Archive — All biological data encrypted.</span>
-        <span className="label-caps">v1.0.0 · stable</span>
+        <span>Â© 2026 Lumina Global Archive â€” All biological data encrypted.</span>
+        <span className="label-caps">v1.0.0 Â· stable</span>
       </div>
     </motion.footer>
   );

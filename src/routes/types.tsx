@@ -7,7 +7,7 @@ import { TYPE_COLORS, type PokeType } from "@/lib/pokemon";
 export const Route = createFileRoute("/types")({
   head: () => ({
     meta: [
-      { title: "Elemental Types — Aether Dex" },
+      { title: "Elemental Types â€” Lumina Suite" },
       { name: "description", content: "Eighteen elemental affinities of the living archive." },
     ],
   }),
@@ -20,9 +20,9 @@ function Types() {
   return (
     <div className="relative mx-auto max-w-[1440px] px-5 py-12 md:px-16">
       <Reveal>
-        <div className="label-caps text-aether">Elemental Spectrum</div>
+        <div className="label-caps text-lumina">Elemental Spectrum</div>
         <h1 className="mt-3 text-[clamp(2.4rem,6vw,5rem)] font-extrabold tracking-[-0.02em]">Eighteen frequencies.</h1>
-        <p className="mt-4 max-w-xl text-muted-foreground">Every specimen is bound to one or two elemental affinities — a living grid of advantages and vulnerabilities.</p>
+        <p className="mt-4 max-w-xl text-muted-foreground">Every specimen is bound to one or two elemental affinities â€” a living grid of advantages and vulnerabilities.</p>
       </Reveal>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

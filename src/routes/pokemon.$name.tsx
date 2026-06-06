@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import { TypeBadge } from "@/components/TypeBadge";
 import { MagneticButton } from "@/components/MagneticButton";
+import { StatRadarChart } from "@/components/pokedex/StatRadarChart";
 import { fetchPokemon, TYPE_COLORS } from "@/lib/pokemon";
 
 export const Route = createFileRoute("/pokemon/$name")({
   head: ({ params }) => ({
     meta: [
-      { title: `${params.name.toUpperCase()} — Aether Dex` },
+      { title: `${params.name.toUpperCase()} â€” Lumina Suite` },
       { name: "description", content: `Detailed biological scan, stats, evolutions and moves for ${params.name}.` },
     ],
   }),
@@ -37,7 +38,7 @@ function PokemonPage() {
     return (
       <div className="mx-auto grid min-h-[70vh] max-w-[1440px] place-items-center px-5">
         <div className="glass-strong rounded-3xl p-10 text-center">
-          <div className="label-caps text-aether">Scanning…</div>
+          <div className="label-caps text-lumina">Scanningâ€¦</div>
           <div className="mt-3 text-xl font-semibold">Linking neural archive</div>
         </div>
       </div>
@@ -48,7 +49,7 @@ function PokemonPage() {
   return (
     <div className="relative mx-auto max-w-[1440px] px-5 py-12 md:px-16">
       <Reveal>
-        <Link to="/browse" className="inline-flex items-center gap-2 label-caps text-foreground/60 hover:text-aether">
+        <Link to="/browse" className="inline-flex items-center gap-2 label-caps text-foreground/60 hover:text-lumina">
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
           Back to Archive
         </Link>
@@ -105,33 +106,48 @@ function PokemonPage() {
       {/* STATS + ABILITIES */}
       <div className="mt-16 grid gap-6 md:grid-cols-3">
         <Reveal className="md:col-span-2">
-          <div className="glass-strong rounded-3xl p-8">
-            <div className="flex items-center justify-between">
-              <h3 className="text-2xl font-extrabold tracking-tight">Base Stats</h3>
-              <div className="label-caps text-foreground/50">Total · {p.total}</div>
+          <div className="glass-strong rounded-3xl p-8 h-full flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1 w-full">
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-extrabold tracking-tight">Base Stats</h3>
+                <div className="label-caps text-foreground/50">Total Â· {p.total}</div>
+              </div>
+              <div className="mt-6 space-y-4">
+                {STAT_KEYS.map(([k, label], i) => {
+                  const v = p.stats[k];
+                  return (
+                    <div key={k}>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="label-caps text-foreground/60">{label}</span>
+                        <span className="font-mono text-foreground">{v}</span>
+                      </div>
+                      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/5">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${Math.min(100, (v / 180) * 100)}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.05 * i }}
+                          className="h-full rounded-full"
+                          style={{ background: `linear-gradient(90deg, ${tcol.fg}, var(--lumina))`, boxShadow: `0 0 10px ${tcol.glow}` }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="mt-6 space-y-4">
-              {STAT_KEYS.map(([k, label], i) => {
-                const v = p.stats[k];
-                return (
-                  <div key={k}>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="label-caps text-foreground/60">{label}</span>
-                      <span className="font-mono text-foreground">{v}</span>
-                    </div>
-                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${Math.min(100, (v / 180) * 100)}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.05 * i }}
-                        className="h-full rounded-full"
-                        style={{ background: `linear-gradient(90deg, ${tcol.fg}, var(--aether))`, boxShadow: `0 0 10px ${tcol.glow}` }}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="flex-1 w-full flex justify-center">
+              <StatRadarChart 
+                stats={{
+                  hp: p.stats.hp,
+                  attack: p.stats.attack,
+                  defense: p.stats.defense,
+                  "special-attack": p.stats.spAtk,
+                  "special-defense": p.stats.spDef,
+                  speed: p.stats.speed
+                }} 
+                color={tcol.fg} 
+              />
             </div>
           </div>
         </Reveal>
@@ -147,7 +163,7 @@ function PokemonPage() {
                     <div className="mt-1 text-xs text-muted-foreground">Biological signature</div>
                   </div>
                   {a.hidden && (
-                    <span className="rounded-full border border-aether/40 bg-aether/10 px-2 py-0.5 label-caps text-aether">hidden</span>
+                    <span className="rounded-full border border-lumina/40 bg-lumina/10 px-2 py-0.5 label-caps text-lumina">hidden</span>
                   )}
                 </li>
               ))}
@@ -171,7 +187,7 @@ function PokemonPage() {
                 className="glass rounded-2xl p-5"
               >
                 <div className="flex items-center justify-between">
-                  <span className="label-caps text-foreground/60">Move · {String(i + 1).padStart(2, "0")}</span>
+                  <span className="label-caps text-foreground/60">Move Â· {String(i + 1).padStart(2, "0")}</span>
                 </div>
                 <div className="mt-2 text-lg font-semibold capitalize">{m.name}</div>
               </motion.div>

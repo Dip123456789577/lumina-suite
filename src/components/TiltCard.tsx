@@ -14,7 +14,7 @@ export function TiltCard({ children, className = "", intensity = 12 }: Props) {
   const ry = useSpring(useTransform(x, [-0.5, 0.5], [-intensity, intensity]), { stiffness: 220, damping: 18 });
   const gxPct = useTransform(x, [-0.5, 0.5], [0, 100]);
   const gyPct = useTransform(y, [-0.5, 0.5], [0, 100]);
-  const bg = useMotionTemplate`radial-gradient(420px circle at ${gxPct}% ${gyPct}%, color-mix(in oklab, var(--aether) 22%, transparent), transparent 60%)`;
+  const bg = useMotionTemplate`radial-gradient(420px circle at ${gxPct}% ${gyPct}%, color-mix(in oklab, var(--lumina) 22%, transparent), transparent 60%)`;
 
   function handleMove(e: PointerEvent<HTMLDivElement>) {
     const r = e.currentTarget.getBoundingClientRect();

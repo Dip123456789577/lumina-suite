@@ -27,7 +27,7 @@ export function LoadingScreen() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 2.4, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 rounded-full border border-white/10"
-                style={{ borderTopColor: "var(--aether)", borderRightColor: "var(--psychic)" }}
+                style={{ borderTopColor: "var(--lumina)", borderRightColor: "var(--psychic)" }}
               />
               <motion.span
                 animate={{ rotate: -360 }}
@@ -35,7 +35,7 @@ export function LoadingScreen() {
                 className="absolute inset-2 rounded-full border border-white/10"
                 style={{ borderBottomColor: "var(--ember)" }}
               />
-              <span className="absolute inset-[36%] rounded-full bg-aether shadow-[0_0_24px_8px_var(--aether)]" />
+              <span className="absolute inset-[36%] rounded-full bg-lumina shadow-[0_0_24px_8px_var(--lumina)]" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -43,7 +43,7 @@ export function LoadingScreen() {
               transition={{ delay: 0.2 }}
               className="label-caps text-foreground/70"
             >
-              Initializing Aether Link…
+              Initializing Lumina Linkâ€¦
             </motion.div>
           </div>
         </motion.div>

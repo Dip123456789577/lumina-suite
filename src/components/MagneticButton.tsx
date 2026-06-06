@@ -29,8 +29,8 @@ export function MagneticButton({
 
   const base =
     variant === "primary"
-      ? "bg-aether text-primary-foreground hover:shadow-[0_18px_50px_-10px_var(--aether)]"
-      : "bg-white/[0.04] text-foreground border border-white/10 hover:border-aether/50 hover:text-aether";
+      ? "bg-lumina text-primary-foreground hover:shadow-[0_18px_50px_-10px_var(--lumina)]"
+      : "bg-white/[0.04] text-foreground border border-white/10 hover:border-lumina/50 hover:text-lumina";
 
   return (
     <motion.button
