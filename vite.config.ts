@@ -16,6 +16,9 @@ export default defineConfig({
     react(),
   ],
   css: { transformer: "lightningcss" },
+  build: {
+    chunkSizeWarningLimit: 2000,
+  },
   resolve: {
     alias: {
       "@": "/src",
