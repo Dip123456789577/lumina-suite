@@ -6,7 +6,15 @@ const variants: Variants = {
   show: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
-export function Reveal({ children, delay = 0, className }: { children: ReactNode; delay?: number; className?: string }) {
+export function Reveal({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
     <motion.div
       variants={variants}

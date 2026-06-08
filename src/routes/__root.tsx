@@ -78,10 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Lumina Suite â€” Premium Biological Archive" },
-      { name: "description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
+      {
+        name: "description",
+        content:
+          "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization.",
+      },
       { name: "author", content: "Lumina" },
       { property: "og:title", content: "Lumina Suite â€” Premium Biological Archive" },
-      { property: "og:description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
+      {
+        property: "og:description",
+        content:
+          "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@luminadex" },
@@ -89,7 +97,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&family=Geist+Mono:wght@500;600&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,

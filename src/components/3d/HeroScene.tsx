@@ -1,11 +1,18 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Environment, Float, Sparkles, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import {
+  OrbitControls,
+  Environment,
+  Float,
+  Sparkles,
+  Sphere,
+  MeshDistortMaterial,
+} from "@react-three/drei";
 import { useRef } from "react";
 import * as THREE from "three";
 
 function Pokeball() {
   const meshRef = useRef<THREE.Group>(null);
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.15;
@@ -19,24 +26,21 @@ function Pokeball() {
         {/* Top Half - Red */}
         <mesh position={[0, 0, 0]}>
           <sphereGeometry args={[2, 64, 64, 0, Math.PI * 2, 0, Math.PI / 2 - 0.05]} />
-          <meshPhysicalMaterial 
-            color="#FF3333" 
-            metalness={0.5} 
-            roughness={0.1} 
-            clearcoat={1} 
-            clearcoatRoughness={0.1} 
+          <meshPhysicalMaterial
+            color="#FF3333"
+            metalness={0.5}
+            roughness={0.1}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
           />
         </mesh>
-        
+
         {/* Bottom Half - White */}
         <mesh position={[0, 0, 0]}>
-          <sphereGeometry args={[2, 64, 64, 0, Math.PI * 2, Math.PI / 2 + 0.05, Math.PI / 2 - 0.05]} />
-          <meshPhysicalMaterial 
-            color="#FFFFFF" 
-            metalness={0.2} 
-            roughness={0.1} 
-            clearcoat={1} 
+          <sphereGeometry
+            args={[2, 64, 64, 0, Math.PI * 2, Math.PI / 2 + 0.05, Math.PI / 2 - 0.05]}
           />
+          <meshPhysicalMaterial color="#FFFFFF" metalness={0.2} roughness={0.1} clearcoat={1} />
         </mesh>
 
         {/* Center Black Band */}
@@ -54,15 +58,15 @@ function Pokeball() {
         {/* Inner Button */}
         <mesh position={[0, 0, 2.05]} rotation={[Math.PI / 2, 0, 0]}>
           <cylinderGeometry args={[0.25, 0.25, 0.1, 32]} />
-          <meshPhysicalMaterial 
-            color="#FFFFFF" 
-            emissive="#FFFFFF" 
-            emissiveIntensity={0.5} 
-            metalness={0.1} 
-            roughness={0.1} 
+          <meshPhysicalMaterial
+            color="#FFFFFF"
+            emissive="#FFFFFF"
+            emissiveIntensity={0.5}
+            metalness={0.1}
+            roughness={0.1}
           />
         </mesh>
-        
+
         {/* Glowing Aura Inside */}
         <Sphere args={[1.8, 32, 32]}>
           <MeshDistortMaterial
@@ -87,20 +91,19 @@ export function HeroScene() {
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 10]} intensity={1.5} />
         <directionalLight position={[-10, -10, -10]} intensity={0.5} color="#A98FF3" />
-        
+
         <Pokeball />
-        
-        <Sparkles 
-          count={300} 
-          scale={15} 
-          size={3} 
-          speed={0.4} 
-          opacity={0.6} 
-          color="#A98FF3" 
-        />
-        
+
+        <Sparkles count={300} scale={15} size={3} speed={0.4} opacity={0.6} color="#A98FF3" />
+
         <Environment preset="city" />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} maxPolarAngle={Math.PI / 2 + 0.2} minPolarAngle={Math.PI / 2 - 0.2} />
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate={false}
+          maxPolarAngle={Math.PI / 2 + 0.2}
+          minPolarAngle={Math.PI / 2 - 0.2}
+        />
       </Canvas>
     </div>
   );

@@ -9,22 +9,49 @@ import { PokemonCard } from "@/components/PokemonCard";
 import { TypeBadge } from "@/components/TypeBadge";
 import { TiltCard } from "@/components/TiltCard";
 import { HeroScene } from "@/components/3d/HeroScene";
-import { fetchPokemon, FEATURED_IDS, TRENDING_IDS, TYPE_COLORS, type PokeType } from "@/lib/pokemon";
+import {
+  fetchPokemon,
+  FEATURED_IDS,
+  TRENDING_IDS,
+  TYPE_COLORS,
+  type PokeType,
+} from "@/lib/pokemon";
 import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Lumina Suite â€” Premium Biological Archive" },
-      { name: "description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
+      {
+        name: "description",
+        content:
+          "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization.",
+      },
       { property: "og:title", content: "Lumina Suite â€” Premium Biological Archive" },
-      { property: "og:description", content: "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization." },
+      {
+        property: "og:description",
+        content:
+          "A cinematic PokÃ©dex experience. Explore 1025+ specimens with luxury data visualization.",
+      },
     ],
   }),
   component: Index,
 });
 
-const TYPES: PokeType[] = ["fire","water","grass","electric","psychic","ghost","dragon","fairy","dark","steel","ice","fighting"];
+const TYPES: PokeType[] = [
+  "fire",
+  "water",
+  "grass",
+  "electric",
+  "psychic",
+  "ghost",
+  "dragon",
+  "fairy",
+  "dark",
+  "steel",
+  "ice",
+  "fighting",
+];
 
 function Index() {
   return (
@@ -47,7 +74,10 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   return (
-    <section ref={ref} className="relative mx-auto flex min-h-[88vh] max-w-[1440px] flex-col items-center justify-center px-5 pt-16 text-center md:px-16 overflow-visible">
+    <section
+      ref={ref}
+      className="relative mx-auto flex min-h-[88vh] max-w-[1440px] flex-col items-center justify-center px-5 pt-16 text-center md:px-16 overflow-visible"
+    >
       <HeroScene />
       <motion.div style={{ y, opacity }} className="relative z-10">
         <motion.div
@@ -88,7 +118,8 @@ function Hero() {
           transition={{ delay: 0.9, duration: 0.8 }}
           className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg"
         >
-          A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and elemental affinities â€” rendered in liquid glass.
+          A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and
+          elemental affinities â€” rendered in liquid glass.
         </motion.p>
 
         <motion.div
@@ -100,7 +131,15 @@ function Hero() {
           <Link to="/browse">
             <MagneticButton>
               Enter Archive
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
             </MagneticButton>
           </Link>
           <Link to="/compare">
@@ -142,12 +181,25 @@ function Featured() {
           <div>
             <div className="label-caps text-lumina">Featured Specimens</div>
             <h2 className="mt-3 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight tracking-tight">
-              Hand-picked from the<br />neural archive.
+              Hand-picked from the
+              <br />
+              neural archive.
             </h2>
           </div>
-          <Link to="/browse" className="hidden items-center gap-2 label-caps text-foreground/60 transition hover:text-lumina md:inline-flex">
+          <Link
+            to="/browse"
+            className="hidden items-center gap-2 label-caps text-foreground/60 transition hover:text-lumina md:inline-flex"
+          >
             View All Data
-            <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              className="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
           </Link>
         </div>
       </Reveal>
@@ -162,9 +214,7 @@ function Featured() {
 }
 
 function SkeletonCard() {
-  return (
-    <div className="glass-strong h-[420px] animate-pulse rounded-[24px]" />
-  );
+  return <div className="glass-strong h-[420px] animate-pulse rounded-[24px]" />;
 }
 
 function SearchBand() {
@@ -172,12 +222,23 @@ function SearchBand() {
     <section className="relative mx-auto max-w-[1100px] px-5 md:px-16">
       <Reveal>
         <div className="glass-strong relative flex items-center gap-3 rounded-full p-2 pl-6">
-          <svg viewBox="0 0 24 24" className="h-5 w-5 text-foreground/60" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5 text-foreground/60"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
           <input
             placeholder="Search by name, type, or PokÃ©dex numberâ€¦"
             className="h-12 flex-1 bg-transparent text-base text-foreground placeholder:text-foreground/40 focus:outline-none"
           />
-          <kbd className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-xs text-foreground/60">âŒ˜ K</kbd>
+          <kbd className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-xs text-foreground/60">
+            âŒ˜ K
+          </kbd>
         </div>
       </Reveal>
     </section>
@@ -197,8 +258,14 @@ function Stats() {
           <Reveal key={s.label} delay={i * 0.08}>
             <TiltCard className="rounded-3xl" intensity={6}>
               <div className="glass-strong relative overflow-hidden rounded-3xl p-10">
-                <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-30 blur-3xl" style={{ background: s.color }} />
-                <div className="text-[clamp(3rem,7vw,5rem)] font-extrabold leading-none" style={{ color: s.color }}>
+                <div
+                  className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full opacity-30 blur-3xl"
+                  style={{ background: s.color }}
+                />
+                <div
+                  className="text-[clamp(3rem,7vw,5rem)] font-extrabold leading-none"
+                  style={{ color: s.color }}
+                >
                   <Counter to={s.v} suffix={s.suf} />
                 </div>
                 <div className="mt-4 label-caps text-foreground/70">{s.label}</div>
@@ -223,11 +290,23 @@ function TypesShowcase() {
       <Reveal delay={0.1}>
         <div className="mt-12 flex flex-wrap gap-3">
           {TYPES.map((t) => (
-            <motion.div key={t} whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300, damping: 18 }}>
+            <motion.div
+              key={t}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 18 }}
+            >
               <Link to="/types" className="block">
-                <div className="glass rounded-2xl p-5 transition-colors duration-300 hover:bg-white/[0.06]" style={{ boxShadow: `0 14px 40px -28px ${TYPE_COLORS[t].glow}` }}>
+                <div
+                  className="glass rounded-2xl p-5 transition-colors duration-300 hover:bg-white/[0.06]"
+                  style={{ boxShadow: `0 14px 40px -28px ${TYPE_COLORS[t].glow}` }}
+                >
                   <TypeBadge type={t} />
-                  <div className="mt-3 text-2xl font-extrabold capitalize" style={{ color: TYPE_COLORS[t].fg }}>{t}</div>
+                  <div
+                    className="mt-3 text-2xl font-extrabold capitalize"
+                    style={{ color: TYPE_COLORS[t].fg }}
+                  >
+                    {t}
+                  </div>
                 </div>
               </Link>
             </motion.div>
@@ -251,7 +330,9 @@ function Trending() {
         <div className="flex items-end justify-between">
           <div>
             <div className="label-caps text-lumina">Trending Near You</div>
-            <h2 className="mt-3 text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight">Recently scanned specimens</h2>
+            <h2 className="mt-3 text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight">
+              Recently scanned specimens
+            </h2>
           </div>
         </div>
       </Reveal>
@@ -277,10 +358,17 @@ function CTA() {
             <h3 className="mx-auto mt-4 max-w-[18ch] text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-tight tracking-tight">
               Step inside the archive.
             </h3>
-            <p className="mx-auto mt-4 max-w-md text-muted-foreground">Cross-reference any of 1025+ specimens, their evolutions, stats, abilities and elemental affinities.</p>
+            <p className="mx-auto mt-4 max-w-md text-muted-foreground">
+              Cross-reference any of 1025+ specimens, their evolutions, stats, abilities and
+              elemental affinities.
+            </p>
             <div className="mt-8 flex justify-center gap-3">
-              <Link to="/browse"><MagneticButton>Enter Archive</MagneticButton></Link>
-              <Link to="/compare"><MagneticButton variant="ghost">Compare Specimens</MagneticButton></Link>
+              <Link to="/browse">
+                <MagneticButton>Enter Archive</MagneticButton>
+              </Link>
+              <Link to="/compare">
+                <MagneticButton variant="ghost">Compare Specimens</MagneticButton>
+              </Link>
             </div>
           </div>
         </div>

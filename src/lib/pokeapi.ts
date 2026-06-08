@@ -14,26 +14,26 @@ export interface PokemonListResponse {
   results: PokemonListItem[];
 }
 
-export const getImageUrl = (id: number) => 
+export const getImageUrl = (id: number) =>
   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
 export async function getPokemonList(limit = 50, offset = 0): Promise<PokemonListResponse> {
   const response = await fetch(`${POKEAPI_BASE_URL}/pokemon?limit=${limit}&offset=${offset}`);
   if (!response.ok) throw new Error("Failed to fetch pokemon list");
-  
+
   const data = await response.json();
-  
+
   // Enhance results with ID and image URL
-  data.results = data.results.map((p: any) => {
-    const urlParts = p.url.split('/');
+  data.results = data.results.map((p: { name: string; url: string }) => {
+    const urlParts = p.url.split("/");
     const id = parseInt(urlParts[urlParts.length - 2], 10);
     return {
       ...p,
       id,
-      image: getImageUrl(id)
+      image: getImageUrl(id),
     };
   });
-  
+
   return data;
 }
 

@@ -11,7 +11,10 @@ export const Route = createFileRoute("/pokemon/$name")({
   head: ({ params }) => ({
     meta: [
       { title: `${params.name.toUpperCase()} â€” Lumina Suite` },
-      { name: "description", content: `Detailed biological scan, stats, evolutions and moves for ${params.name}.` },
+      {
+        name: "description",
+        content: `Detailed biological scan, stats, evolutions and moves for ${params.name}.`,
+      },
     ],
   }),
   component: PokemonPage,
@@ -49,8 +52,19 @@ function PokemonPage() {
   return (
     <div className="relative mx-auto max-w-[1440px] px-5 py-12 md:px-16">
       <Reveal>
-        <Link to="/browse" className="inline-flex items-center gap-2 label-caps text-foreground/60 hover:text-lumina">
-          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+        <Link
+          to="/browse"
+          className="inline-flex items-center gap-2 label-caps text-foreground/60 hover:text-lumina"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-3.5 w-3.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M19 12H5M11 18l-6-6 6-6" />
+          </svg>
           Back to Archive
         </Link>
       </Reveal>
@@ -59,8 +73,16 @@ function PokemonPage() {
       <div className="mt-8 grid gap-10 md:grid-cols-2">
         <Reveal>
           <div className="glass-strong relative aspect-[4/5] overflow-hidden rounded-[28px]">
-            <div className="pointer-events-none absolute inset-0" style={{ background: `radial-gradient(circle at 50% 30%, ${tcol.bg}, transparent 60%)` }} />
-            <div className="pointer-events-none absolute -bottom-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl opacity-60" style={{ background: tcol.glow }} />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: `radial-gradient(circle at 50% 30%, ${tcol.bg}, transparent 60%)`,
+              }}
+            />
+            <div
+              className="pointer-events-none absolute -bottom-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl opacity-60"
+              style={{ background: tcol.glow }}
+            />
             <motion.img
               src={p.artwork}
               alt={p.name}
@@ -69,20 +91,26 @@ function PokemonPage() {
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="relative h-full w-full object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.5)]"
             />
-            <div className="absolute left-6 top-6 label-caps text-foreground/60">NO. {String(p.id).padStart(4, "0")}</div>
+            <div className="absolute left-6 top-6 label-caps text-foreground/60">
+              NO. {String(p.id).padStart(4, "0")}
+            </div>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div className="flex h-full flex-col justify-center">
             <div className="flex flex-wrap items-center gap-2">
-              {p.types.map((t) => <TypeBadge key={t} type={t} />)}
+              {p.types.map((t) => (
+                <TypeBadge key={t} type={t} />
+              ))}
               <span className="label-caps text-foreground/50">{p.genus}</span>
             </div>
             <h1 className="mt-6 text-[clamp(3rem,8vw,6rem)] font-extrabold capitalize leading-[1] tracking-[-0.03em]">
               {p.name}
             </h1>
-            <p className="mt-6 max-w-prose text-base text-muted-foreground md:text-lg">{p.flavor}</p>
+            <p className="mt-6 max-w-prose text-base text-muted-foreground md:text-lg">
+              {p.flavor}
+            </p>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="glass rounded-2xl p-5">
@@ -96,8 +124,12 @@ function PokemonPage() {
             </div>
 
             <div className="mt-8 flex gap-3">
-              <Link to="/compare"><MagneticButton>Add to Comparator</MagneticButton></Link>
-              <Link to="/browse"><MagneticButton variant="ghost">Continue Archive</MagneticButton></Link>
+              <Link to="/compare">
+                <MagneticButton>Add to Comparator</MagneticButton>
+              </Link>
+              <Link to="/browse">
+                <MagneticButton variant="ghost">Continue Archive</MagneticButton>
+              </Link>
             </div>
           </div>
         </Reveal>
@@ -128,7 +160,10 @@ function PokemonPage() {
                           viewport={{ once: true }}
                           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.05 * i }}
                           className="h-full rounded-full"
-                          style={{ background: `linear-gradient(90deg, ${tcol.fg}, var(--lumina))`, boxShadow: `0 0 10px ${tcol.glow}` }}
+                          style={{
+                            background: `linear-gradient(90deg, ${tcol.fg}, var(--lumina))`,
+                            boxShadow: `0 0 10px ${tcol.glow}`,
+                          }}
                         />
                       </div>
                     </div>
@@ -137,16 +172,16 @@ function PokemonPage() {
               </div>
             </div>
             <div className="flex-1 w-full flex justify-center">
-              <StatRadarChart 
+              <StatRadarChart
                 stats={{
                   hp: p.stats.hp,
                   attack: p.stats.attack,
                   defense: p.stats.defense,
                   "special-attack": p.stats.spAtk,
                   "special-defense": p.stats.spDef,
-                  speed: p.stats.speed
-                }} 
-                color={tcol.fg} 
+                  speed: p.stats.speed,
+                }}
+                color={tcol.fg}
               />
             </div>
           </div>
@@ -163,7 +198,9 @@ function PokemonPage() {
                     <div className="mt-1 text-xs text-muted-foreground">Biological signature</div>
                   </div>
                   {a.hidden && (
-                    <span className="rounded-full border border-lumina/40 bg-lumina/10 px-2 py-0.5 label-caps text-lumina">hidden</span>
+                    <span className="rounded-full border border-lumina/40 bg-lumina/10 px-2 py-0.5 label-caps text-lumina">
+                      hidden
+                    </span>
                   )}
                 </li>
               ))}
@@ -187,7 +224,9 @@ function PokemonPage() {
                 className="glass rounded-2xl p-5"
               >
                 <div className="flex items-center justify-between">
-                  <span className="label-caps text-foreground/60">Move Â· {String(i + 1).padStart(2, "0")}</span>
+                  <span className="label-caps text-foreground/60">
+                    Move Â· {String(i + 1).padStart(2, "0")}
+                  </span>
                 </div>
                 <div className="mt-2 text-lg font-semibold capitalize">{m.name}</div>
               </motion.div>

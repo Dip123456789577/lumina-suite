@@ -12,7 +12,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-16 md:grid-cols-4 md:px-16">
         <div>
           <div className="text-lg font-extrabold tracking-[0.18em]">AETHERÂ·DEX</div>
-          <p className="mt-3 max-w-xs text-sm text-muted-foreground">A cinematic encyclopedia of biological specimens. Built for explorers.</p>
+          <p className="mt-3 max-w-xs text-sm text-muted-foreground">
+            A cinematic encyclopedia of biological specimens. Built for explorers.
+          </p>
         </div>
         {[
           { title: "Archive", items: ["Specimens", "Regions", "Evolutions", "Moves"] },
@@ -24,7 +26,9 @@ export function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
               {col.items.map((i) => (
                 <li key={i}>
-                  <a href="#" className="transition hover:text-lumina">{i}</a>
+                  <a href="#" className="transition hover:text-lumina">
+                    {i}
+                  </a>
                 </li>
               ))}
             </ul>
