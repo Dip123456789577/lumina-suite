@@ -70,96 +70,114 @@ function Index() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 220]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
   return (
     <section
       ref={ref}
-      className="relative mx-auto flex min-h-[88vh] max-w-[1440px] flex-col items-center justify-center px-5 pt-16 text-center md:px-16 overflow-visible"
+      className="relative mx-auto flex min-h-[92vh] max-w-[1440px] flex-col justify-center px-5 pt-24 pb-16 md:px-16 overflow-visible"
     >
-      <HeroScene />
-      <motion.div style={{ y, opacity }} className="relative z-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full z-10 relative">
+        {/* Left Column: Hero Copywriting & Actions */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 label-caps text-foreground/70"
+          style={{ y, opacity }}
+          className="flex flex-col items-center lg:items-start text-center lg:text-left lg:col-span-7"
         >
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lumina shadow-[0_0_10px_var(--lumina)]" />
-          Lumina Link Â· v1.0 Â· Live
-        </motion.div>
-
-        <h1 className="mx-auto mt-8 max-w-[14ch] text-[clamp(2.6rem,8vw,6.5rem)] font-extrabold leading-[1] tracking-[-0.03em]">
-          {"The encyclopedia of\u00A0".split(" ").map((w, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 36, filter: "blur(10px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
-              transition={{ delay: 0.2 + i * 0.08, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="mr-3 inline-block"
-            >
-              {w}
-            </motion.span>
-          ))}
-          <motion.span
-            initial={{ opacity: 0, y: 36, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
-            transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative inline-block bg-gradient-to-br from-lumina via-secondary to-ember bg-clip-text text-transparent"
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 label-caps text-foreground/75 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
           >
-            living things.
-          </motion.span>
-        </h1>
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-lumina shadow-[0_0_10px_var(--lumina)]" />
+            Lumina Link · v1.0 · Live
+          </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="mx-auto mt-6 max-w-xl text-base text-muted-foreground md:text-lg"
-        >
-          A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and
-          elemental affinities â€” rendered in liquid glass.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.05, duration: 0.7 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
-        >
-          <Link to="/browse">
-            <MagneticButton>
-              Enter Archive
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
+          <h1 className="mt-6 text-[clamp(2.4rem,6.2vw,4.8rem)] font-extrabold leading-[1.05] tracking-[-0.03em] text-foreground">
+            {"The encyclopedia of\u00A0".split(" ").map((w, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
+                transition={{ delay: 0.15 + i * 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="mr-2 inline-block"
               >
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </MagneticButton>
-          </Link>
-          <Link to="/compare">
-            <MagneticButton variant="ghost">Open Compare</MagneticButton>
-          </Link>
-        </motion.div>
-      </motion.div>
+                {w}
+              </motion.span>
+            ))}
+            <motion.span
+              initial={{ opacity: 0, y: 36, filter: "blur(8px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
+              transition={{ delay: 0.5, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+              className="relative inline-block bg-gradient-to-br from-lumina via-secondary to-ember bg-clip-text text-transparent pr-1"
+            >
+              living things.
+            </motion.span>
+          </h1>
 
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.8 }}
+            className="mt-6 max-w-lg text-base text-muted-foreground md:text-lg leading-relaxed"
+          >
+            A cinematic, real-time biological archive. Cross-reference 1025+ specimens, evolutions and
+            elemental affinities — rendered in liquid glass.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.7 }}
+            className="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4"
+          >
+            <Link to="/browse">
+              <MagneticButton>
+                Enter Archive
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </MagneticButton>
+            </Link>
+            <Link to="/compare">
+              <MagneticButton variant="ghost">Open Compare</MagneticButton>
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Right Column: 3D Interactive Scene Container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="relative lg:col-span-5 h-[320px] sm:h-[400px] md:h-[460px] lg:h-[530px] w-full flex items-center justify-center overflow-visible"
+        >
+          {/* Backing ambient gradient orb for depth */}
+          <div className="absolute inset-1/4 rounded-full bg-gradient-to-tr from-lumina/20 to-psychic/20 blur-[80px] -z-10 animate-pulse duration-[8s]" />
+          <HeroScene />
+        </motion.div>
+      </div>
+
+      {/* Centered Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.8 }}
-        className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2"
+        transition={{ delay: 1.3, duration: 0.8 }}
+        className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 hidden md:block"
       >
-        <div className="flex flex-col items-center gap-2 label-caps text-foreground/40">
+        <div className="flex flex-col items-center gap-2 label-caps text-foreground/30">
           <span>Scroll</span>
           <motion.span
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="block h-6 w-px bg-white/30"
+            className="block h-5 w-px bg-white/20"
           />
         </div>
       </motion.div>

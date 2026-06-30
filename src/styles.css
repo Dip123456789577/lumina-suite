@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -178,7 +177,9 @@
   }
 
   body {
+    background-color: #0f0f14;
     background-color: var(--color-background);
+    color: #f2f2f5;
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
@@ -286,6 +287,7 @@
 
 html,
 body {
+  background-color: #0f0f14;
   background: var(--background);
 }
 ::selection {
