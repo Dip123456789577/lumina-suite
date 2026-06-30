@@ -12,7 +12,9 @@ export default defineConfig({
     tanstackStart({
       server: { entry: "server" },
     }),
-    nitro({ preset: "cloudflare-module" }),
+    nitro({
+      preset: process.env.NITRO_PRESET || (process.env.VERCEL ? "vercel" : "cloudflare-module"),
+    }),
     react(),
   ],
   css: { transformer: "lightningcss" },
